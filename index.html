@@ -9,6 +9,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            font-family: Arial, sans-serif;
         }
         #ruler {
             position: absolute;
@@ -16,21 +17,30 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: transparent;
-            cursor: crosshair;
             pointer-events: none;
-            border: 1px solid red;
+        }
+        #coordinates {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div id="ruler"></div>
+    <div id="ruler">
+        <div id="coordinates">Coordenadas: (0, 0)</div>
+    </div>
     <script>
-        const ruler = document.getElementById('ruler');
-        ruler.addEventListener('mousemove', (e) => {
+        const coordinates = document.getElementById('coordinates');
+        document.addEventListener('mousemove', (e) => {
             const x = e.clientX;
             const y = e.clientY;
-            ruler.innerHTML = `<div style="position: absolute; top: ${y}px; left: ${x}px; transform: translate(-50%, -50%); color: red;">(${x}, ${y})</div>`;
+            coordinates.textContent = `Coordenadas: (${x}, ${y})`;
         });
     </script>
 </body>
