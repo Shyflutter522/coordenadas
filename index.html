@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Ruler</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #ruler {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: transparent;
+            cursor: crosshair;
+            pointer-events: none;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="ruler"></div>
+    <script>
+        const ruler = document.getElementById('ruler');
+        ruler.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            ruler.innerHTML = `<div style="position: absolute; top: ${y}px; left: ${x}px; transform: translate(-50%, -50%); color: red;">(${x}, ${y})</div>`;
+        });
+    </script>
+</body>
+</html>
